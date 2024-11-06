@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant usuario
+    participant navegador
+    participant servidor
+
+    usuario->>navegador: Navega a https://studies.cs.helsinki.fi/exampleapp/spa
+    navegador->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate servidor
+    servidor-->>navegador: Documento HTML para la SPA
+    deactivate servidor
+
+    navegador->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate servidor
+    servidor-->>navegador: El archivo CSS
+    deactivate servidor
+
+    navegador->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate servidor
+    servidor-->>navegador: El archivo JavaScript para la SPA
+    deactivate servidor
+
+    Note right of navegador: El navegador ejecuta el código JavaScript de la SPA
+
+    navegador->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate servidor
+    servidor-->>navegador: [{ "content": "HTML es fácil", "date": "2023-1-1" }, { "content": "La SPA es genial", "date": "2024-11-06" }, ... ]
+    deactivate servidor
+
+    Note right of navegador: El navegador renderiza las notas desde los datos JSON sin recargar la página
