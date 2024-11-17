@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 
 import App from './App'
 import Hello from './Hello'
-import Counter from "./Counter.jsx";
+import Counter from "./components/Counter.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
